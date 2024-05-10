@@ -17,9 +17,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'username',
+        'phone',
+        'token',
+        'token_expires_at',
     ];
 
     /**
@@ -28,8 +29,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'token',
     ];
 
     /**
@@ -40,8 +40,13 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
+            'token_expires_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function gameResults()
+    {
+        return $this->hasMany(GameResult::class);
     }
 }
