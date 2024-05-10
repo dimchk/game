@@ -37,7 +37,7 @@
     "scripts": {
         "start": [
             "composer install",
-            "mv .env.example .env",
+            "cp .env.example .env",
             "./vendor/bin/sail up -d",
             "./vendor/bin/sail artisan migrate",
             "./vendor/bin/sail artisan key:generate",

@@ -1,3 +1,15 @@
-```./vendor/bin/sail up -d ```
+## Instalation:
+```sh
+composer start
+```
 
-```./vendor/bin/sail artisan migrate```
+Open - [localhost](http://localhost)
+
+## Tests
+
+```sh
+./vendor/bin/sail phpunit  
+```
+
+
+

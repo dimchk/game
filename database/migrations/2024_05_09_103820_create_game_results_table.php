@@ -21,6 +21,8 @@ class CreateGameResultsTable extends Migration
             $table->float('prize');
             $table->string('currency');
             $table->timestamp('created_at')->useCurrent();
+            $table->index('user_id');
+
         });
     }
 

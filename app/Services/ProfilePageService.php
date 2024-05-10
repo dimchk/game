@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\DTO\RegistrationDto;
+use App\Models\GameResult;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -26,8 +27,7 @@ class ProfilePageService
         if (!$user) {
             throw new ModelNotFoundException('User not found');
         }
-        $user->token_expires_at = Carbon::now();
-        $user->save();
+        $user->delete();
     }
 
     public function renew(int $userId): User
@@ -36,6 +36,7 @@ class ProfilePageService
         if (!$user) {
             throw new ModelNotFoundException('User not found');
         }
+        GameResult::where('user_id', $user->id)->delete();
         $user->token_expires_at = Carbon::now()->addDays(7);
         $user->token = TokenService::generate();
         $user->save();

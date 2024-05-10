@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('username',50);
-            $table->string('phone', 30)->unique();
+            $table->string('phone', 30);
             $table->string('token', 8);
             $table->timestamp('token_expires_at');
             $table->timestamps();
